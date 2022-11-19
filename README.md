@@ -59,6 +59,8 @@ Find what: `("[^",]+),([^"]+")`
 
 Replace with: `$1$2`
 
+You will have to hit `Replace All` multiple times until it does not replace any more.
+
 ![alt text](https://github.com/jsmithschilling/nextGen-Migration/blob/main/notepadregex.png "Notepad++ RegEx")
 
 *Example of a row with commas in the `Appointment_Notes`
