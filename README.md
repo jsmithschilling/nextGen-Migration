@@ -92,6 +92,6 @@ FROM            dbo.TRK_TrackChart INNER JOIN
 
 ### Consulting Information
 
-If you are need of assistance for your eMDs to NextGen migration then we do offer <Service>
+If you are need of assistance for your eMDs to NextGen migration then we do offer "Service"
 
-Reach out to us at <email> for a quote!
+Reach out to us at "email" for a quote!
