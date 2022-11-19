@@ -6,11 +6,13 @@
   
   Exported from version eMDs Solution Series 9.1.0 (June 2, 2022)
   
+  
+  
   ***
   
   ### Demographics Custom View
   
-  nextGenDemographicView
+  `nextGenDemographicView`
   
   Create a Custom View for Demographics using this statement:
   
@@ -34,7 +36,7 @@ FROM            dbo.VIEW_Patient INNER JOIN
 
 ### Appointments Custom View
 
-nextGenAppointmentsView
+`nextGenAppointmentsView`
 
 Create a Custom View for Appointments using this statement:
 
@@ -47,18 +49,19 @@ FROM            dbo.VIEW_Appointment INNER JOIN
                          dbo.APP_AppointmentType ON dbo.VIEW_Appointment.AppointmentType_ID = dbo.APP_AppointmentType.AppointmentType_ID
 ```
 
-Doctors/Nurses may put commas within their Appointment_Notes which will cause issues with columns being further down and mess up the data alignment. 
+eMDs User's may have put commas within their `Appointment_Notes` which will cause issues with columns being further down and mess up the data alignment. 
 
 ### Notepad++
 
-This Pattern Match will replace any commas within the Appointment_Notes column between ,"NOTES, ARE, HERE",
+This Pattern Match will replace any commas within the `Appointment_Notes` column between `,"NOTES, ARE, HERE",`
 
-Find what: ("[^",]+),([^"]+")
-Replace with: $1$2
+Find what: `("[^",]+),([^"]+")`
 
-{image]
+Replace with: `$1$2`
 
-*Example of a row with commas in the Appointment_Notes
+![alt text](https://github.com/jsmithschilling/nextGen-Migration/blob/main/notepadregex.png "Notepad++ RegEx")
+
+*Example of a row with commas in the `Appointment_Notes`
 
 ```
 Appointment_AppStartTime,Appointment_AppEndTime,Patient_ID,Appointment_Notes,Entity_ID,Person_FirstName,Person_LastName,AppointmentType_Description
@@ -68,7 +71,7 @@ Appointment_AppStartTime,Appointment_AppEndTime,Patient_ID,Appointment_Notes,Ent
 
 ### Multimedia Custom View
 
-nextGenMultimediaView
+`nextGenMultimediaView`
 
 This custom view is, so we can tie a Patient to their documents that were uploaded within eMDs as eMDs Image storage does not place a single person's documents in their own unique folder (in my case)
 
