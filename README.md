@@ -87,3 +87,11 @@ FROM            dbo.TRK_TrackChart INNER JOIN
                          dbo.IMG_Image ON dbo.IMG_ImageDoc.ImageDoc_ID = dbo.IMG_Image.ImageDoc_ID INNER JOIN
                          dbo.VIEW_Patient ON dbo.TRK_TrackChart.Patient_ID = dbo.VIEW_Patient.Patient_ID
 ```
+
+***
+
+### Consulting Information
+
+If you are need of assistance for your eMDs to NextGen migration then we do offer <Service>
+
+Reach out to us at <email> for a quote!
