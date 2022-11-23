@@ -17,19 +17,26 @@
   Create a Custom View for Demographics using this statement:
   
  ``` 
- SELECT        dbo.VIEW_Patient.Entity_ID AS entityID, dbo.VIEW_Patient.Person_SSN AS ssn, dbo.VIEW_Patient.Person_ConfidentialEmail AS email, dbo.VIEW_Phone.Phone_Number AS phoneNumber,
-                         dbo.VIEW_Phone.Phone_Extension AS phoneExt, dbo.VIEW_Patient.EmployeeStatus_ID, dbo.VIEW_Address.Address_Line1, dbo.VIEW_Address.Address_Line2, dbo.VIEW_Address.Address_City,
-                         dbo.VIEW_Address.Address_ZipCode, dbo.VIEW_Address.State_Abbreviation, dbo.INSR_Insurance.Insurance_PolicyNum, dbo.VIEW_Patient.Person_FirstName AS firstName,
-                         dbo.VIEW_Patient.Person_MiddleName AS middleName, dbo.VIEW_Patient.Person_LastName AS lastName, dbo.VIEW_Patient.Person_DateOfBirth AS dateofBirth, dbo.VIEW_Patient.Person_Sex AS sex,
-                         cdar21.VIEW_Demographics.maritalStatusDisplayName AS maritalStatus, cdar21.VIEW_Demographics.raceDisplayName AS race, cdar21.VIEW_Demographics.patientRelationshipToGuarantor,
-                         dbo.VIEW_Insurance.Organization_Name, dbo.INSR_Insurance.Insurance_ID, dbo.VIEW_Insurance.InsuranceCompany_MDDPayorID, dbo.VIEW_Insurance.InsuranceCompany_MDCPayorID,
-                         dbo.VIEW_Patient.Patient_ID AS patientID
+ SELECT        dbo.VIEW_Patient.Entity_ID AS entityID, dbo.VIEW_Patient.Person_SSN AS ssn, dbo.VIEW_Patient.Person_ConfidentialEmail AS email, dbo.VIEW_Phone.Phone_Number AS phoneNumber, 
+                         dbo.VIEW_Phone.Phone_Extension AS phoneExt, dbo.VIEW_Patient.EmployeeStatus_ID, dbo.VIEW_Address.Address_Line1, dbo.VIEW_Address.Address_Line2, dbo.VIEW_Address.Address_City, 
+                         dbo.VIEW_Address.Address_ZipCode, dbo.VIEW_Address.State_Abbreviation, dbo.INSR_Insurance.Insurance_PolicyNum, dbo.VIEW_Patient.Person_FirstName AS firstName, 
+                         dbo.VIEW_Patient.Person_MiddleName AS middleName, dbo.VIEW_Patient.Person_LastName AS lastName, dbo.VIEW_Patient.Person_DateOfBirth AS dateofBirth, dbo.VIEW_Patient.Person_Sex AS sex, 
+                         cdar21.VIEW_Demographics.maritalStatusDisplayName AS maritalStatus, cdar21.VIEW_Demographics.raceDisplayName AS race, cdar21.VIEW_Demographics.patientRelationshipToGuarantor, 
+                         dbo.VIEW_Insurance.Organization_Name, dbo.INSR_Insurance.Insurance_ID, dbo.VIEW_Insurance.InsuranceCompany_MDDPayorID, dbo.VIEW_Insurance.InsuranceCompany_MDCPayorID, 
+                         dbo.VIEW_Patient.Patient_ID AS patientID, dbo.INSR_Insurance.InsuranceType_ID, dbo.LKUP_InsuranceType.InsuranceType_Description, dbo.INSR_Insurance.Insurance_Deductible, 
+                         dbo.INSR_Insurance.Insurance_PolicyLimit, dbo.INSR_Insurance.Insurance_MaxBenefit, dbo.INSR_Insurance.Insurance_Copay, dbo.INSR_Insurance.Insurance_EligibilityNotes, 
+                         dbo.INSR_Insurance.Insurance_FormularyBenefits, dbo.VIEW_Guarantor.Person_FirstName AS Guarantor_First, dbo.VIEW_Guarantor.Person_MiddleName AS Guarantor_Middle, 
+                         dbo.VIEW_Guarantor.Person_LastName AS Guarantor_Last, dbo.VIEW_Guarantor.Person_MaidenName AS Guarantor_Maiden, dbo.VIEW_Guarantor.Person_DateOfBirth AS Guarantor_DOB, 
+                         dbo.VIEW_Guarantor.Person_SSN AS Guarantor_SSN, dbo.VIEW_Guarantor.Person_Sex AS Guarantor_Sex
 FROM            dbo.VIEW_Patient INNER JOIN
                          dbo.VIEW_Phone ON dbo.VIEW_Patient.Entity_ID = dbo.VIEW_Phone.Entity_ID INNER JOIN
                          dbo.VIEW_Address ON dbo.VIEW_Patient.Entity_ID = dbo.VIEW_Address.Entity_ID INNER JOIN
                          dbo.INSR_Insurance ON dbo.VIEW_Patient.Entity_ID = dbo.INSR_Insurance.Entity_ID INNER JOIN
                          cdar21.VIEW_Demographics ON dbo.VIEW_Patient.Entity_ID = cdar21.VIEW_Demographics.entityId INNER JOIN
-                         dbo.VIEW_Insurance ON dbo.INSR_Insurance.Insurance_ID = dbo.VIEW_Insurance.Insurance_ID
+                         dbo.VIEW_Insurance ON dbo.INSR_Insurance.Insurance_ID = dbo.VIEW_Insurance.Insurance_ID INNER JOIN
+                         dbo.LKUP_InsuranceType ON dbo.INSR_Insurance.InsuranceType_ID = dbo.LKUP_InsuranceType.InsuranceType_ID AND 
+                         dbo.INSR_Insurance.InsuranceType_ID = dbo.LKUP_InsuranceType.InsuranceType_ID INNER JOIN
+                         dbo.VIEW_Guarantor ON cdar21.VIEW_Demographics.guarantorId = dbo.VIEW_Guarantor.Guarantor_ID
 ```
 
 ***
